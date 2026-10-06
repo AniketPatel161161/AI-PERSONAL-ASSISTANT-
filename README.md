@@ -1,4 +1,4 @@
-# AI-PERSONAL-ASSISTANT-MINOR PROJECT-
+# AI PERSONAL ASSISTANT [MINOR PROJECT]
 
 A simple website where you can **ask any question** and **summarize long emails** in seconds, using AI.
 
