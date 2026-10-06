@@ -1,0 +1,334 @@
+/* ===== Palette: midnight indigo, violet, pink, cyan ===== */
+:root {
+    --bg: #0f0b24;
+    --bg-soft: #1a1240;
+    --surface: rgba(255, 255, 255, 0.06);
+    --surface-strong: rgba(255, 255, 255, 0.09);
+    --border: rgba(255, 255, 255, 0.14);
+    --text: #ece9ff;
+    --muted: #a9a3d6;
+    --violet: #7c3aed;
+    --pink: #db2777;
+    --cyan: #22d3ee;
+    --error: #ff8a9b;
+    --font-head: "Sora", "Segoe UI", Arial, sans-serif;
+    --font-body: "DM Sans", "Segoe UI", Arial, sans-serif;
+}
+
+/* ===== Reset ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== Page background ===== */
+body {
+    min-height: 100vh;
+    padding: 56px 20px 72px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text);
+    background:
+        radial-gradient(900px 600px at 12% -10%, rgba(124, 58, 237, 0.35), transparent 60%),
+        radial-gradient(800px 600px at 100% 100%, rgba(219, 39, 119, 0.28), transparent 60%),
+        linear-gradient(160deg, var(--bg) 0%, var(--bg-soft) 100%);
+    background-attachment: fixed;
+}
+
+/* Dot grid pattern that fades out toward the bottom */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.10) 1.2px, transparent 1.2px);
+    background-size: 30px 30px;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+    mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+}
+
+/* Floating shapes (the <div class="bg-shapes"> in index.html) */
+.bg-shapes {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.bg-shapes span {
+    position: absolute;
+    border-radius: 50%;
+}
+
+/* Soft glowing orbs */
+.bg-shapes span:nth-child(1) {
+    width: 340px;
+    height: 340px;
+    top: -90px;
+    left: -80px;
+    background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.55), transparent 70%);
+    filter: blur(8px);
+    animation: drift 18s ease-in-out infinite;
+}
+
+.bg-shapes span:nth-child(2) {
+    width: 280px;
+    height: 280px;
+    bottom: -60px;
+    right: -50px;
+    background: radial-gradient(circle at 60% 40%, rgba(219, 39, 119, 0.5), transparent 70%);
+    filter: blur(8px);
+    animation: drift 22s ease-in-out infinite reverse;
+}
+
+.bg-shapes span:nth-child(3) {
+    width: 200px;
+    height: 200px;
+    top: 42%;
+    right: 6%;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.28), transparent 70%);
+    filter: blur(6px);
+    animation: drift 26s ease-in-out infinite;
+}
+
+/* Outline rings */
+.bg-shapes span:nth-child(4) {
+    width: 520px;
+    height: 520px;
+    top: 8%;
+    right: -200px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.bg-shapes span:nth-child(5) {
+    width: 360px;
+    height: 360px;
+    bottom: 6%;
+    left: -150px;
+    border: 1px solid rgba(34, 211, 238, 0.18);
+}
+
+.bg-shapes span:nth-child(6) {
+    width: 90px;
+    height: 90px;
+    top: 30%;
+    left: 7%;
+    border: 2px dashed rgba(255, 255, 255, 0.14);
+    animation: spin 40s linear infinite;
+}
+
+@keyframes drift {
+    0%, 100% { transform: translate(0, 0); }
+    50%      { transform: translate(24px, 34px); }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===== Main heading ===== */
+.main-heading {
+    text-align: center;
+    font-family: var(--font-head);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    background: linear-gradient(90deg, #c4b5fd 0%, #f9a8d4 50%, #67e8f9 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* ===== Glass container ===== */
+.container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 34px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow:
+        0 24px 60px rgba(5, 2, 20, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+}
+
+/* ===== Section headings ===== */
+h2 {
+    font-family: var(--font-head);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Small accent bar before each section heading */
+h2::before {
+    content: "";
+    width: 5px;
+    height: 22px;
+    border-radius: 3px;
+    background: linear-gradient(180deg, var(--violet), var(--pink));
+}
+
+/* ===== Forms ===== */
+form {
+    margin-bottom: 18px;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 14px 16px;
+    margin: 6px 0 12px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--text);
+    background: rgba(10, 6, 30, 0.55);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--muted);
+    opacity: 0.8;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--cyan);
+    background: rgba(10, 6, 30, 0.75);
+    box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.18);
+}
+
+/* ===== Buttons ===== */
+button {
+    padding: 12px 26px;
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, var(--violet), var(--pink));
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 8px 22px rgba(124, 58, 237, 0.4);
+    transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+    box-shadow: 0 12px 28px rgba(219, 39, 119, 0.45);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:focus-visible {
+    outline: 3px solid var(--cyan);
+    outline-offset: 3px;
+}
+
+/* ===== Loading text ===== */
+#ans-loading,
+#summary-loading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 4px 0 10px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+#ans-loading::before,
+#summary-loading::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-top-color: var(--cyan);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+/* ===== Output boxes ===== */
+#answer,
+#summary {
+    margin-top: 8px;
+    padding: 16px 18px;
+    white-space: pre-wrap;
+    line-height: 1.7;
+    background: var(--surface-strong);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--cyan);
+    border-radius: 12px;
+}
+
+/* Hide the box until there is something to show */
+#answer:empty,
+#summary:empty {
+    display: none;
+}
+
+#answer.error,
+#summary.error {
+    color: var(--error);
+    border-left-color: var(--error);
+}
+
+/* ===== Divider ===== */
+hr {
+    margin: 32px 0;
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 600px) {
+    body {
+        padding: 36px 14px 56px;
+    }
+
+    .container {
+        padding: 22px 18px;
+        border-radius: 16px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+/* ===== Respect reduced motion ===== */
+@media (prefers-reduced-motion: reduce) {
+    .bg-shapes span,
+    #ans-loading::before,
+    #summary-loading::before {
+        animation: none;
+    }
+
+    button {
+        transition: none;
+    }
+}
